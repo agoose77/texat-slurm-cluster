@@ -3,6 +3,6 @@
 set -eu
 
 module purge; module load bluebear
-module load texat
+module load texat-1.0.0
 
 exec python -m distributed.cli.dask_scheduler --scheduler-file /mnt/backend/scheduler.json

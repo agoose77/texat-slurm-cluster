@@ -2,13 +2,15 @@
 This repository contains the runtime scripts required to launch a TexAT Dask cluster on SLURM. It contains a few BlueBEAR specific variables, but otherwise targets SLURM.
 
 ## Setup
-The `modulefiles` directory contains the Environment Modulefile for `texat`. It must be edited to reflect the full path to the `bin` folder. Assuming that the module `use.own` is loaded, then the contents of `modulesfiles` should be moved to `$HOME/privatemodules`
+1. The `use.own` module should be loaded by default on the target system
+2. Ansible should be installed `pip install -U ansible`
+3. Run the setup playbook `ansible-playbook setup.yml`
 
 The `bin` directory contains the `texat` and `python` executables, and the `scripts` executables use these to perform various functions. The `texat-runtime.sif` image must be on `PATH`
 
 ## Usage
 First, load the `texat` module:
-`module load texat`.
+`module load texat-1.0.0`.
 
 To launch a cluster, first start the scheduler:
 ```bash
