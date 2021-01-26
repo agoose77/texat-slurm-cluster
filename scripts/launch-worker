@@ -9,7 +9,7 @@ n_cpu="${SLURM_CPUS_PER_TASK:-1}"
 mem_per_cpu=$(echo "${SLURM_MEM_PER_CPU}" | grep -E "[0-9]+[^0-9]" || echo "${SLURM_MEM_PER_CPU}M")
 
 # Parse lifetime from walltime, with 20s margin
-lifetime_s=$(squeue -h -j "${SLURM_JOB_ID}" -o "%L" | "./walltime-to-seconds" -m 20)
+lifetime_s=$(squeue -h -j "${SLURM_JOB_ID}" -o "%L" | "walltime-to-seconds" -m 20)
 
 echo "Starting worker with ${n_cpu} CPUs and ${mem_per_cpu} memory/cpu with a lifetime of ${lifetime_s} seconds"
 
