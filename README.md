@@ -1,11 +1,14 @@
 # README
+This repository contains the runtime scripts required to launch a TexAT Dask cluster on SLURM. It contains a few BlueBEAR specific variables, but otherwise targets SLURM.
+
 ## Setup
 The `modulefiles` directory contains the Environment Modulefile for `texat`. It must be edited to reflect the full path to the `bin` folder. Assuming that the module `use.own` is loaded, then the contents of `modulesfiles` should be moved to `$HOME/privatemodules`
 
 The `bin` directory contains the `texat` and `python` executables, and the `scripts` executables use these to perform various functions. The `texat-runtime.sif` image must be on `PATH`
 
 ## Usage
-This directory contains the runtime scripts required to launch a TexAT Dask cluster on SLURM. It contains a few BlueBEAR specific variables, but otherwise targets SLURM.
+First, load the `texat` module:
+`module load texat`.
 
 To launch a cluster, first start the scheduler:
 ```bash
