@@ -1,0 +1,24 @@
+#!/usr/bin/env python
+import argparse
+import getpass
+import json
+import os
+
+from urllib import parse
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-f", "--scheduler-file", type=argparse.FileType('r'), default="/mnt/backend/scheduler.json")
+    parser.add_argument("-r", "--remote-host", type=str, default="bluebear.bham.ac.uk")
+    parser.add_argument("-u", "--user", type=str, default=getpass.getuser())
+    args = parser.parse_args()
+
+    scheduler_info = json.load(args.scheduler_file)
+
+    url = parse.urlparse(scheduler_info['address'])
+    scheduler_ip = url.hostname
+    user = args.user
+    remote_host = args.remote_host
+
+    print(f"ssh -N -L 8786:{scheduler_ip}:8786 -L 8787:{scheduler_ip}:8787 {user}@{scheduler_ip} -J {user}@{remote_host}")
+

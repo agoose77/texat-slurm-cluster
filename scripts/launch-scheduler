@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -eu
+
+module purge; module load bluebear
+module load texat-python-3.8.5
+
+exec python -m distributed.cli.dask_scheduler --scheduler-file /mnt/backend/scheduler.json

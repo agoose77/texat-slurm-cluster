@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+set -eu
+
+module purge; module load bluebear
+module load texat-python-3.8.5
+
+# Parse number of CPUs and Memory/CPU from SLURM variables
+n_cpu="${SLURM_CPUS_PER_TASK:-1}"
+mem_per_cpu=$(echo "${SLURM_MEM_PER_CPU}" | grep -E "[0-9]+[^0-9]" || echo "${SLURM_MEM_PER_CPU}M")
+
+# Parse lifetime from walltime, with 20s margin
+lifetime_s=$(squeue -h -j "${SLURM_JOB_ID}" -o "%L" | "./walltime-to-seconds" -m 20)
+
+echo "Starting worker with ${n_cpu} CPUs and ${mem_per_cpu} memory/cpu with a lifetime of ${lifetime_s} seconds"
+
+# Start a worker with one process per CPU
+exec python -m distributed.cli.dask_worker \
+--scheduler-file /mnt/backend/scheduler.json \
+--local-directory /tmp \
+--nthreads 1 \
+--nprocs "${n_cpu}" \
+--memory-limit "${mem_per_cpu}" \
+--name "${SLURM_JOB_ID}" \
+--lifetime "${lifetime_s}s"

@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -e
+
+BB_WORKDIR=$(mktemp -d /scratch/${USER}_${SLURM_JOBID}.XXXXXX)
+RDS_PATH="/rds/projects/2018/pricet-npl/adh471"
+export SINGULARITY_BIND="$SINGULARITY_BIND,${RDS_PATH}/shared:/mnt/shared,${RDS_PATH}/backend:/mnt/backend,${RDS_PATH}/texat-sim-data:/opt/geant4-data,${BB_WORKDIR}:/tmp"
+export SINGULARITY_CLEANENV=1
+
+exec texat-runtime.sif "$@"

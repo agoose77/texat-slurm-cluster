@@ -1,0 +1,40 @@
+#!/usr/bin/env python3
+import datetime as dt
+import re
+import sys
+import argparse
+
+patterns = [
+    r"(\d+)-(\d+):(\d+):(\d+)",
+    r"(\d+):(\d+):(\d+)",
+    r"(\d+):(\d+)",
+    r"(\d+)",
+]
+
+fields = ("days", "hours", "minutes", "seconds")
+
+
+def match_time(time):
+    for p in patterns:
+        m = re.match(p, time)
+        if m:
+            return [int(x) for x in m.groups()]
+    raise ValueError
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("file", type=argparse.FileType('r'), default=sys.stdin, nargs="?")
+    parser.add_argument("-m", "--margin", help="lifetime margin in seconds", type=float, default=20)
+    args = parser.parse_args()
+    
+    margin = dt.timedelta(seconds=args.margin)
+    time = args.file.read().strip()
+
+    values = match_time(time)
+    params = dict(zip(reversed(fields), reversed(values)))
+    duration = dt.timedelta(**params)
+    lifetime = duration - margin
+    
+    print(f"{max(0, lifetime.total_seconds())}")
+
