@@ -1,0 +1,8 @@
+---
+- name: Destroy texat module
+  hosts: localhost
+  tasks:
+    - name: Remove modulefile
+      file: 
+        path: $HOME/privatemodules/texat-1.0.0
+        state: absent

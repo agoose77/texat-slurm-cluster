@@ -1,0 +1,8 @@
+---
+- name: Setup texat module
+  hosts: localhost
+  tasks:
+    - name: Template modulefile
+      template: 
+        src: modulefiles/texat-1.0.0
+        dest: $HOME/privatemodules/texat-1.0.0

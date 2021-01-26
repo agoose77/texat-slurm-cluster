@@ -14,7 +14,7 @@ module-whatis   "Sets the environment for using texat Python"
 
 # for Tcl script use only
 set     home            $env(HOME)
-set     topdir          <PATH-TO-TEXAT>
+set     topdir          {{ playbook_dir }}
 set     version         1.0.0
 set     sys             linux86
 
