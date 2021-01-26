@@ -1,21 +1,21 @@
 #%Module1.0#####################################################################
 ##
-## modules texat-python-3.8.5
+## modules texat-1.0.0
 ##
-## modulefiles/texat-python-3.8.5  Written by Angus Hollands
+## modulefiles/texat-1.0.0  Written by Angus Hollands
 ##
 proc ModulesHelp { } {
         global version modroot
 
-        puts stderr "texat - sets the Environment for texat Python 3.8.5 in my home directory"
+        puts stderr "texat - sets the Environment for texat in my home directory"
 }
 
 module-whatis   "Sets the environment for using texat Python"
 
 # for Tcl script use only
 set     home            $env(HOME)
-set     topdir          <PATH>/texat-python-3.8.5
-set     version         3.8.5
+set     topdir          <PATH-TO-TEXAT>
+set     version         1.0.0
 set     sys             linux86
 
 prepend-path    PATH            $topdir/bin

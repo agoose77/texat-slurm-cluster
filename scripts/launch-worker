@@ -2,7 +2,7 @@
 set -eu
 
 module purge; module load bluebear
-module load texat-python-3.8.5
+module load texat
 
 # Parse number of CPUs and Memory/CPU from SLURM variables
 n_cpu="${SLURM_CPUS_PER_TASK:-1}"
