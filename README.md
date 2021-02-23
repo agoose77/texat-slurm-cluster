@@ -1,4 +1,4 @@
-# README
+# TexAT Slurm Cluster
 This repository contains the runtime scripts required to launch a TexAT Dask cluster on SLURM. It contains a few BlueBEAR specific variables, but otherwise targets SLURM.
 
 ## Setup
