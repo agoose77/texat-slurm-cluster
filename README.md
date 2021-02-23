@@ -24,5 +24,3 @@ Then launch some single process workers:
 ```bash
 sbatch -t 5:00:00 --array 0-395 --mem-per-cpu "1G" launch-worker
 ```
-
-# texat-slurm
