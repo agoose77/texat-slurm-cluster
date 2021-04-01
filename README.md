@@ -4,7 +4,7 @@ This repository contains the runtime scripts required to launch a TexAT Dask clu
 ## Setup
 1. The `use.own` module should be loaded by default on the target system
 2. Ansible should be installed `pip install -U ansible`
-3. Run the setup playbook `ansible-playbook setup.yml --extra-vars texat_shared_path=<TEXAT_SHARED_PATH>`, where `<TEXAT_SHARED_PATH>` is the path to the shared storage
+3. Run the setup playbook `ansible-playbook setup.yml -e "texat_data_path=<TEXAT_DATA_PATH> texat_geant4_path=<TEXAT_GEANT4_PATH>"`, where `<TEXAT_DATA_PATH>` is the path to the shared storage, and `<TEXAT_GEANT4_PATH>` is the path to the Geant4 data-files storage.
 
 The `bin` directory contains the `texat` and `python` executables, and the `scripts` executables use these to perform various functions. The `texat-runtime.sif` image must be on `PATH`
 

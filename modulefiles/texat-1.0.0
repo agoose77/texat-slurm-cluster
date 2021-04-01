@@ -15,11 +15,15 @@ module-whatis   "Sets the environment for using texat Python"
 # for Tcl script use only
 set     home            $env(HOME)
 set     topdir          "{{ playbook_dir }}"
+set     datadir         "{{ texat_data_path | mandatory }}"
+set     geant4dir       "{{ texat_geant4_path | mandatory }}"
 set     version         1.0.0
 set     sys             linux86
 
-setenv          TEXAT_SHARED_PATH "{{ texat_shared_path | mandatory }}"
+setenv          TEXAT_DATA_PATH    "$datadir"
+setenv          TEXAT_GEANT4_PATH  "$geant4dir"
+setenv          TEXAT_ROOT_PATH    "$topdir"
 
-prepend-path    PATH              $topdir/bin
-prepend-path    PATH              $topdir/scripts
+prepend-path    PATH              "$topdir/bin"
+prepend-path    PATH              "$topdir/scripts"
 

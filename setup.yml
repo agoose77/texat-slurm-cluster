@@ -2,10 +2,6 @@
 - name: Setup texat module
   hosts: localhost
   tasks:
-    - name: Check variables are defined
-      assert:
-        that:
-          - texat_shared_path is defined
     - name: Template modulefile
       template: 
         src: modulefiles/texat-1.0.0
