@@ -8,7 +8,7 @@ from urllib import parse
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("-f", "--scheduler-file", type=argparse.FileType('r'), default="/mnt/backend/scheduler.json")
+    parser.add_argument("-f", "--scheduler-file", type=argparse.FileType('r'), default="/mnt/data/scheduler.json")
     parser.add_argument("-r", "--remote-host", type=str, default="bluebear.bham.ac.uk")
     parser.add_argument("-u", "--user", type=str, default=getpass.getuser())
     args = parser.parse_args()

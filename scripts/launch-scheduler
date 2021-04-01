@@ -5,4 +5,4 @@ set -eu
 module purge; module load bluebear; module load use.own
 module load texat-1.0.0
 
-exec python -m distributed.cli.dask_scheduler --scheduler-file /mnt/backend/scheduler.json
+exec python -m distributed.cli.dask_scheduler --scheduler-file /mnt/data/scheduler.json

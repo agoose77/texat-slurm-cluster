@@ -16,7 +16,7 @@ To launch a cluster, first start the scheduler:
 ```bash
 sbatch -t "24:00:00" launch-scheduler
 ```
-The workers locate the scheduler using a configuration file that is written by the scheduler to `/mnt/backend` in the container. 
+The workers locate the scheduler using a configuration file that is written by the scheduler to `/mnt/data` in the container. 
 
 The `print-ssh-command` script will load this file and print the appropriate SSH command to tunnel into the scheduler node.
 
