@@ -7,3 +7,7 @@ distributed:
       spill: 0.80  # fraction at which we spill to disk
       terminate: 0.95  # fraction at which we terminate the worker
       pause: 1.0  # fraction at which we pause worker threads
+  nanny:
+    environ: {
+        "MALLOC_TRIM_THRESHOLD_": 131072
+    }
