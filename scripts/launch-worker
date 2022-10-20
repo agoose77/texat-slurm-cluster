@@ -18,7 +18,7 @@ exec python -m distributed.cli.dask_worker \
 --scheduler-file /mnt/data/scheduler.json \
 --local-directory /tmp \
 --nthreads 1 \
---nprocs "${n_cpu}" \
+--nworkers "${n_cpu}" \
 --memory-limit "${mem_per_cpu}" \
 --name "${SLURM_JOB_ID}" \
 --lifetime "${lifetime_s}s"
